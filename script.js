@@ -2,8 +2,13 @@ let info;//ira armazenar as informaçoes do quiz
 let acertos;
 let respondidas;
 //pede o quiz escolhido da api
-const iniciar = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1');
-iniciar.then(renderizarquiz);
+function começar(){
+    const apaga = document.querySelector('.corpoquiz');
+    apaga.innerHTML = `<ul>
+    </ul>`;
+    const iniciar = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1');
+    iniciar.then(renderizarquiz);
+}
 
 //imprime o quiz na tela
 function renderizarquiz(resposta) {
@@ -37,10 +42,12 @@ function renderizarquiz(resposta) {
         //muda a cor da pergunta
         document.getElementById('cor' + i).style.backgroundColor = perguntas.color;
         const opçoes = document.getElementById(i);
+        let aleatorio = perguntas.answers;
+        randomiza(aleatorio);
         
         //cria as respostas
         for (let a = 0; a < perguntas.answers.length; a++) {
-            const respostas = perguntas.answers[a];
+            const respostas = aleatorio[a];
             switch (respostas.isCorrectAnswer) {
                 case true:
                     opçoes.innerHTML +=
@@ -61,6 +68,12 @@ function renderizarquiz(resposta) {
         }
     }
 } 
+function randomiza(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+       const j = Math.floor(Math.random() * (i + 1));
+       [array[i], array[j]] = [array[j], array[i]];
+ }
+}
 function mudacor(clique, classe) {
     let mudar = document.querySelectorAll(".caixa"+ classe);
     mudar.forEach(outras => {
@@ -74,6 +87,11 @@ function mudacor(clique, classe) {
     });
     let escolhida = clique.classList;
     escolhida.remove("naoescolhida");
+    let next = classe + 1;
+    
+    setTimeout(() => {
+        document.querySelector("#cor" + next).scrollIntoView();
+    }, 2000);
 }
 function verifica(escolha) {
     respondidas++;
@@ -82,13 +100,15 @@ function verifica(escolha) {
     }
     if (respondidas === info.questions.length) {
         resultado();
+        setTimeout(() => {
+            document.querySelector("section").scrollIntoView();
+        }, 2000);
     }
 }
 function resultado() {
-    const pontuaçao = (acertos/respondidas)*100;
-    const result = document.querySelector('section');
+    const pontuaçao = Math.round((acertos/respondidas)*100);
+    const result = document.querySelector('.corpoquiz');
     let nivel = [];
-    result.innerHTML = '';
     for (let i = 0; i < info.levels.length - 1; i++) {
         nivel = info.levels[i];
         const proximo = info.levels[i+1].minValue;
@@ -97,13 +117,18 @@ function resultado() {
         }
         nivel = info.levels[i + 1];
     }
-    result.innerHTML += ` <div class="nivel">
-    <h2>${pontuaçao}% de acerto: ${nivel.title}</h2>
-</div>
-<div class="mensagemnivel">
-    <img src="${nivel.image}"/>
-    <p>${nivel.text}</p>
-</div>`
-
+    result.innerHTML += ` 
+    <section>
+        <div class="nivel">
+            <h2>${pontuaçao}% de acerto: ${nivel.title}</h2>
+        </div>
+        <div class="mensagemnivel">
+            <img src="${nivel.image}"/>
+            <p>${nivel.text}</p>
+        </div>
+    </section>
+    <button class="reiniciar" onclick="começar()">Reiniciar quiz</button>
+    <button class="home">Voltar pra home</button>`
 }
+começar();
 

@@ -2,6 +2,14 @@
 *{
     box-sizing: border-box;
 }
+/*suaviza o scroll*/
+html {
+    scroll-behavior: smooth;
+  }
+/*esconde o elemento*/
+.esconde{
+    visibility: hidden;
+}
 /*todo o body*/
 body{
     font-family: 'Roboto', sans-serif;
