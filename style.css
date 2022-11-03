@@ -88,21 +88,28 @@ li.caixapergunta{
     justify-content: space-between;
     row-gap: 19px;
 }
+.opçoes div{
+    display: flex;
+    flex-direction: column;
+}
 /*muda o cursor quando em cima de uma das opçoes*/
 .opçoes div:hover{
     cursor: pointer;
 }
 /*imagem da opção de resposta*/
-.opçoes img{
+input{
     width: 330px;
     height: 175.2px;
 }
 /*texto da opção de resposta*/
-.opçoes p{
+label{
     margin-top: 18px;
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
+}
+.naoescolhida{
+    opacity: 0.6;
 }
 /*resultado*/
 /*caso alguem esteja usando essa tag*/
@@ -201,11 +208,11 @@ button:hover{
         row-gap: 12px;
     }
     /*imagem da opção de resposta*/
-    .opçoes img{
+    input{
         width: 163px;
         height: 113px;
     }
-    .opçoes p{
+    label{
         margin-top: 7.5px;
         font-size: 13px;
         line-height: 15px;
