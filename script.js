@@ -128,7 +128,11 @@ function resultado() {
         </div>
     </section>
     <button class="reiniciar" onclick="começar()">Reiniciar quiz</button>
-    <button class="home">Voltar pra home</button>`
+    <button class="home" onclick="voltar()">Voltar pra home</button>`
+}
+function voltar() {
+    const pagina = document.querySelector('#respondequiz');
+    pagina.classList.add('esconde');
 }
 começar();
 
