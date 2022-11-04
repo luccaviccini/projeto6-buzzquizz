@@ -7,18 +7,34 @@ const criarQuizz = () =>{
     meuQuizz.innerHTML = `
     <div class="quizzes">
         <div class="quizz">
+            <div class="edit">
+            <ion-icon name="create-outline"></ion-icon>
+            <ion-icon onclick="apagar(this)" name="trash-outline"></ion-icon>
+            </div>
             <img src="Rectangle 34.png">
             <div class="titulo">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
         </div>
         <div class="quizz">
+        <div class="edit">
+            <ion-icon name="create-outline"></ion-icon>
+            <ion-icon onclick="apagar(this)" name="trash-outline"></ion-icon>
+            </div>
             <img src="Rectangle 34.png">
             <div class="titulo">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
         </div>
         <div class="quizz">
+        <div class="edit">
+            <ion-icon name="create-outline"></ion-icon>
+            <ion-icon onclick="apagar(this)" name="trash-outline"></ion-icon>
+            </div>
             <img src="Rectangle 34.png">
             <div class="titulo">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
         </div>
         <div class="quizz">
+        <div class="edit">
+            <ion-icon name="create-outline"></ion-icon>
+            <ion-icon onclick="apagar(this)" name="trash-outline"></ion-icon>
+            </div>
             <img src="Rectangle 34.png">
             <div class="titulo">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
         </div>
@@ -69,4 +85,9 @@ function QuizzDiv(Quizz) {
         <div class="titulo">${Quizz.title}</div>
     </div>
     `;
+}
+
+const apagar = (seletor) =>{
+    seletor = seletor.parentNode;
+    seletor.parentNode.remove();
 }
