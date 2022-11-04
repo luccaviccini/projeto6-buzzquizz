@@ -41,7 +41,8 @@ main {
 }
 
 .comece-pelo-comeco,
-.crie-suas-perguntas {
+.crie-suas-perguntas,
+.decidir-niveis {
     max-width: 564px;
     width: 100%;
     display: flex;
@@ -53,7 +54,8 @@ main {
 
 
 .comece-pelo-comeco h2,
-.crie-suas-perguntas h2 {
+.crie-suas-perguntas h2, 
+.decidir-niveis h2{
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
@@ -62,7 +64,8 @@ main {
 }
 
 .comece-pelo-comeco input,
-.crie-suas-perguntas input {
+.crie-suas-perguntas input,
+.decidir-niveis input {
     max-width: 564px;
     width: 100vw;
     height: 46px;
@@ -81,12 +84,14 @@ main {
 }
 
 .comece-pelo-comeco input:focus,
-.crie-suas-perguntas input:focus {
+.crie-suas-perguntas input:focus,
+.decidir-niveis input:focus {
     outline-color: #999999;
 }
 
 .comece-pelo-comeco input::placeholder,
-.crie-suas-perguntas input::placeholder {
+.crie-suas-perguntas input::placeholder,
+.decidir-niveis input::placeholder {
     font-style: italic;
     font-weight: 400;
     font-size: 19px;
@@ -95,7 +100,8 @@ main {
 }
 
 .comece-pelo-comeco button,
-.crie-suas-perguntas button {
+.crie-suas-perguntas button,
+.decidir-niveis button {
     max-width: 367px;
     width: 100%;
     height: 54px;
@@ -110,14 +116,16 @@ main {
 }
 
 .comece-pelo-comeco button:hover,
-.crie-suas-perguntas button:hover {
+.crie-suas-perguntas button:hover,
+.decidir-niveis button:hover {
     background: #D32C22;
     cursor: pointer;
 }
 
 .pergunta,
 .resposta,
-.respostas-incorretas {
+.respostas-incorretas,
+.nivel {
     max-width: 564px;
     width: 100%;
     display: flex;

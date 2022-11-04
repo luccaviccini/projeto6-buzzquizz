@@ -22,7 +22,7 @@
             <input id="url-img-quizz" type="text" placeholder="URL da imagem do seu quizz">
             <input id="qtd-pgt-quizz" type="text" placeholder="Quantidade de perguntas do quizz">
             <input id="qnt-niveis-quizz" type="text" placeholder="Titulo do seu quizz">
-            <button onclick="criarPerguntas()"type="submit">Prosseguir pra criar perguntas</button>
+            <button onclick="criarPerguntas()" type="submit">Prosseguir pra criar perguntas</button>
         </div>
         <div class="crie-suas-perguntas escondido">
             <h2>Crie suas perguntas</h2>
@@ -98,9 +98,27 @@
                 </div>
             </div>
 
-            <button type="submit"> Prosseguir pra criar níveis</button>
+            <button onclick="criarNiveis()" type="submit"> Prosseguir pra criar níveis</button>
         </div>
-
+        <div class="decidir-niveis escondido">
+            <div class="nivel">
+                <h2>Agora, decida os níveis</h2>
+                <div class="container-h3">
+                    <h3>Nivel 1</h3>
+                </div>
+                <input id="titulo-nivel" type="text" placeholder="Título do nível">
+                <input id="porcentagem-acerto-minima" type="text" placeholder="% de acerto mínima">
+                <input id="titulo-nivel" type="text" placeholder="URL da imagem do nível">
+                <input id="titulo-nivel" type="text" placeholder="Descrição do nível">
+            </div>
+            <nav class="menu-editar">
+                <div class="container-h3">
+                    <h3>Nível 2</h3>
+                </div>
+                <img onclick="editarNivel()" src="./images/edit.svg" alt="edit-logo">
+            </nav>
+            <button type="submit">Finalizar Quizz</button>
+        </div>
     </main>
     <script src="./script.js"></script>
 </body>
