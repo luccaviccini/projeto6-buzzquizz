@@ -22,19 +22,17 @@ header h1{
     font-size: 37px;
     line-height: 43px;
     color: #FFFFFF;
-    
 }
 
     
 
 .meuQuizz{
-    box-sizing: border-box;
     width: 1051px;
     height: 181px;
     margin: 60px auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background: #FAFAFA;
     border: 1px dashed #D5D5D5;
@@ -53,8 +51,27 @@ header h1{
     text-align: center;
     color: #B9B9B9;
 }
+
+.quizzUsuario{
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 1051px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.quizzUsuario ion-icon{
+    color: #EC362D;
+    font-size: 32px;
+}
+
 .criarQuizz{
-    box-sizing: border-box;
     width: 151px;
     height: 40px;    
     background: #FAFAFA;
@@ -80,10 +97,11 @@ header h1{
 }
 
 .quizzes{
+    width: 1051px;
     margin-top: 20px; 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
 }
@@ -94,9 +112,11 @@ header h1{
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     border-radius: 5px;
     position: relative;
-   
 }
-
+.quizz img{
+    width: 340px;
+    height: 181px;
+}
 .titulo{
     position: absolute;
     width: 301px;
@@ -111,6 +131,10 @@ header h1{
     display: flex;
     align-items: center;
     color: #FFFFFF;
+}
+
+.escondido{
+    display:none;
 }
 
 @media only screen and (max-width: 1100px)  {
