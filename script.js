@@ -9,6 +9,12 @@ function editarPergunta(){
         block: "center",
         inline: "center",
       }
-    );
-    
+    );    
+}
+
+function criarPerguntas(){
+  const criarPerguntas = document.querySelector(".crie-suas-perguntas");
+  const comecePeloComeco = document.querySelector(".comece-pelo-comeco");
+  comecePeloComeco.classList.toggle("escondido");
+  criarPerguntas.classList.toggle("escondido");
 }
