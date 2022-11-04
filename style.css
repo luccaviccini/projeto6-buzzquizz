@@ -67,10 +67,14 @@ header h1{
     align-items: center;
 }
 .quizzUsuario ion-icon{
+    margin-left: 15px;
     color: #EC362D;
     font-size: 32px;
 }
 
+.quizzUsuario ion-icon:hover{
+    cursor:pointer;
+}
 .criarQuizz{
     width: 151px;
     height: 40px;    
@@ -83,6 +87,11 @@ header h1{
     font-size: 21px;
     line-height: 25px;
     color: #EC362D;
+}
+
+.criarQuizz:hover{
+    cursor: pointer;
+    opacity: 70%;
 }
 
 .todosQuizz{
@@ -109,7 +118,6 @@ header h1{
 .quizz{
     width: 340px;
     height: 181px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     border-radius: 5px;
     position: relative;
 }
@@ -117,6 +125,11 @@ header h1{
     width: 340px;
     height: 181px;
 }
+
+.quizz:hover{
+    cursor:pointer;
+}
+
 .titulo{
     position: absolute;
     width: 301px;
@@ -140,11 +153,22 @@ header h1{
 @media only screen and (max-width: 1100px)  {
     .meuQuizz{
         width: 90%;
+        align-items: center;
     }
     .todosQuizz{
         width: 90%;
     }
     .quizz{
         margin: 0 auto;
+    }
+    .quizzes{
+        width: 100%;
+    }
+    .quizzUsuario{
+        width: 90%;
+        justify-content: space-between;
+    }
+    .quizzUsuario ion-icon{
+        margin-left: 0;
     }
 }

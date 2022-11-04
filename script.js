@@ -28,7 +28,8 @@ const criarQuizz = () =>{
     'background: white;'+
     'margin: 0 auto;'+
     'margin-bottom:60px;'+
-    'height:100%;';
+    'height:100%;'+
+    'align-items:unset';
 }
 
 let listQuizzes=[];
@@ -59,6 +60,7 @@ function renderizarQuizzes(Quizzes) {
         meuQuizz.innerHTML += QuizzDiv(Quizz);
     }
 }
+
 //monta a div do quizz
 function QuizzDiv(Quizz) {
     return `
