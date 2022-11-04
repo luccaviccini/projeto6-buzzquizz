@@ -24,6 +24,17 @@ function criarNiveis() {
   const niveis = document.querySelector(".decidir-niveis");
   perguntas.classList.toggle("escondido");
   niveis.classList.toggle("escondido");
-  
+
 }
 
+function editarNivel(){
+    const editar = document.querySelector("#editar-nivel2");
+    editar.classList.toggle("escondido");
+    editar.scrollIntoView(
+      {
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      }
+    );    
+}
