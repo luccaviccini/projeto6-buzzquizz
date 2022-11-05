@@ -169,6 +169,9 @@ header h1{
 }
 
 .titulo{
+    word-wrap: break-word;   
+    overflow-wrap: break-word;
+    word-break: break-word;
     position: absolute;
     width: 301px;
     left: 20px;
