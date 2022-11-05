@@ -54,14 +54,15 @@ let info;//ira armazenar as informaçoes do quiz
 let acertos;
 let respondidas;
 //pede o quiz escolhido da api
-function começar(){
+function começar(identidade){
     const apaga = document.querySelector('.corpoquiz');
     apaga.innerHTML = `<ul>
     </ul>`;
-    const iniciar = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1');
+    const iniciar = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${identidade}`);
     iniciar.then(renderizarquiz);
 }
 //LUCAS DUAN
+
 let listQuizzes=[];
 
 //carrega os quizzes
@@ -88,13 +89,23 @@ function renderizarQuizzes(Quizzes) {
     for (let i = 0; i < Quizzes.length; i++) {
         const Quizz = Quizzes[i];
         meuQuizz.innerHTML += QuizzDiv(Quizz);
+
     }
+}
+var questionario='';
+function puxarId(Quizz){
+    questionario = Quizz;
+    const tela2 = document.getElementById("respondequiz");
+    tela2.classList.remove("esconde");
+    const tela1 = document.querySelector(".Tela-1");
+    tela1.classList.add("esconde");
+    começar(questionario);
 }
 
 //monta a div do quizz
 function QuizzDiv(Quizz) {
     return `
-    <div class="quizz">
+    <div onclick="puxarId(${Quizz.id})" class="quizz">
         <img src="${Quizz.image}">
         <div class="titulo">${Quizz.title}</div>
     </div>
@@ -197,7 +208,7 @@ function verifica(escolha) {
     if (respondidas === info.questions.length) {
         resultado();
         setTimeout(() => {
-            document.querySelector("section").scrollIntoView();
+            document.querySelector(".reiniciar").scrollIntoView();
         }, 2000);
     }
 }
@@ -223,12 +234,15 @@ function resultado() {
             <p>${nivel.text}</p>
         </div>
     </section>
-    <button class="reiniciar" onclick="começar()">Reiniciar quiz</button>
+    <button class="reiniciar" onclick="começar(questionario)">Reiniciar quiz</button>
     <button class="home" onclick="voltar()">Voltar pra home</button>`
 }
 function voltar() {
     const pagina = document.querySelector('#respondequiz');
     pagina.classList.add('esconde');
+    const tela1 = document.querySelector(".Tela-1");
+    tela1.classList.remove("esconde");
+    document.querySelector(".meuQuizz").scrollIntoView();
 }
 começar();
 //LUCAS DUAN

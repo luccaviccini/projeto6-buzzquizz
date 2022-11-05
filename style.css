@@ -137,6 +137,7 @@ header h1{
 .quizz img{
     width: 340px;
     height: 181px;
+    mask-image: linear-gradient(black 60%,transparent);
     -webkit-mask-image: linear-gradient(black 60%,transparent);
 }
 
