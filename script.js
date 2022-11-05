@@ -3,8 +3,9 @@
 function criarPerguntas() {
   const criarPerguntas = document.querySelector(".crie-suas-perguntas");
   const comecePeloComeco = document.querySelector(".comece-pelo-comeco");
-  comecePeloComeco.classList.toggle("escondido");
   criarPerguntas.classList.toggle("escondido");
+  comecePeloComeco.classList.toggle("escondido");
+  
 }
 
 function editarPergunta(){
@@ -22,19 +23,22 @@ function editarPergunta(){
 function criarNiveis() {
   const perguntas = document.querySelector(".crie-suas-perguntas");
   const niveis = document.querySelector(".decidir-niveis");
-  perguntas.classList.toggle("escondido");
   niveis.classList.toggle("escondido");
-
+  perguntas.classList.toggle("escondido");
+  niveis.children[0].scrollIntoView({
+    behavior: "auto",
+    block: "center",
+    inline: "center",
+  });
 }
 
 function editarNivel(){
     const editar = document.querySelector("#editar-nivel2");
     editar.classList.toggle("escondido");
-    editar.scrollIntoView(
-      {
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      }
-    );    
+    console.log(editar.children[2]);
+    editar.children[2].scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });    
 }

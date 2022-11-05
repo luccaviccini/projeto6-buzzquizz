@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 
+
     <title>BuzzQuizz</title>
 </head>
 
@@ -24,7 +25,7 @@
             <input id="qnt-niveis-quizz" type="text" placeholder="Titulo do seu quizz">
             <button onclick="criarPerguntas()" type="submit">Prosseguir pra criar perguntas</button>
         </div>
-        <div class="crie-suas-perguntas escondido">
+        <div class="crie-suas-perguntas escondido ">
             <h2>Crie suas perguntas</h2>
             <div id="editar-pergunta1" class="editar-pergunta">
                 <div class="pergunta">
@@ -121,9 +122,16 @@
                 <input id="titulo-nivel" type="text" placeholder="Título do nível">
                 <input id="porcentagem-acerto-minima" type="text" placeholder="% de acerto mínima">
                 <input id="url-imagem-nivel" type="text" placeholder="URL da imagem do nível">
-                <textarea id="descricao-nivel" type="text" placeholder="Descrição do nível"></textarea> 
+                <textarea id="descricao-nivel" type="text" placeholder="Descrição do nível"></textarea>
             </div>
             <button type="submit">Finalizar Quizz</button>
+        </div>
+        <div class="finalizar">
+            <h2>Crie suas perguntas</h2>
+            
+                <img src="./images/hogwarts.png">
+            
+            <button type="submit"> Prosseguir pra criar níveis</button>
         </div>
     </main>
     <script src="./script.js"></script>
