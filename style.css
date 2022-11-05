@@ -2,7 +2,7 @@ body * {
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     font-style: normal;
-    background: #FAFAFA;
+    
 }
 html {
     scroll-behavior: smooth;
@@ -289,7 +289,7 @@ label{
 /*resultado*/
 /*caso alguem esteja usando essa tag*/
 /*>adicionar uma classe a essa section especifica*/
-#respodequizz section{
+#respondequiz section{
     width: 760px;
     height: auto;
     padding: 18px;
@@ -395,7 +395,7 @@ button:hover{
     /*resultado*/
     /*caso alguem esteja usando essa tag*/
     /*>adicionar uma classe a essa section especifica*/
-    #respodequizz section{
+    #respondequiz section{
         width: 375px;
         padding: 18px;
     }
