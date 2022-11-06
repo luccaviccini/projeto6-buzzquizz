@@ -48,7 +48,9 @@ const criarQuizz = () =>{
     'align-items:unset';
 
     const telaCriarQuizz = document.querySelector(".comece-pelo-comeco");
+    const maint3 = document.querySelector("#main-t3");
     telaCriarQuizz.classList.remove("escondido");
+    maint3.classList.remove("esconde");
     const tela1 = document.querySelector(".Tela-1");
     tela1.classList.add("esconde");
 }
