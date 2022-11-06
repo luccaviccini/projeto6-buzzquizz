@@ -118,12 +118,13 @@ main {
     line-height: 25px;
     color: #FFF5F4;
     border: none;
-    margin: 70px 0;
+    margin: 25px 0;
 }
 
 .comece-pelo-comeco button:hover,
 .crie-suas-perguntas button:hover,
-.decidir-niveis button:hover {
+.decidir-niveis button:hover,
+.finalizar button:hover {
     background: #D32C22;
     cursor: pointer;
 }
@@ -227,6 +228,19 @@ main {
     font-weight: 400;
     font-size: 23px;
     line-height: 27px;
-    
+}
 
+button.voltar-home {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #818181;
+    margin-top: 0px;
+    background: none;
+}
+
+button.voltar-home:hover {
+    cursor: pointer;
+    background: none;
+    color: #999999
 }

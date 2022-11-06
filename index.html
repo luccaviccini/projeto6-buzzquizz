@@ -17,7 +17,7 @@
         <h1>BuzzQuizz</h1>
     </header>
     <main>
-        <div class="comece-pelo-comeco escondido">
+        <div class="comece-pelo-comeco">
             <h2>Comece pelo começo</h2>
             <input id="titulo-quizz" type="text" placeholder="Título do seu quizz">
             <input id="url-img-quizz" type="text" placeholder="URL da imagem do seu quizz">
@@ -124,17 +124,19 @@
                 <input id="url-imagem-nivel" type="text" placeholder="URL da imagem do nível">
                 <textarea id="descricao-nivel" type="text" placeholder="Descrição do nível"></textarea>
             </div>
-            <button type="submit">Finalizar Quizz</button>
+            <button onclick="finalizarQuizz()" type="submit">Finalizar Quizz</button>
         </div>
-        <div class="finalizar">
+        <div class="finalizar escondido">
             <h2>Seu quizz está pronto! </h2>
             
             <div class="container-img-fim">
                 <img src="./images/hogwarts.png" alt="hogwarts">
                 <p> O quão Potterhead é você? </p>
+                
             </div>
             
-            <button type="submit"> Acessar Quizz</button>
+            <button onclick="" type="submit"> Acessar Quizz</button>
+            <button onclick="voltarHome()" class="voltar-home">Voltar para home</button>
         </div>
     </main>
     <script src="./script.js"></script>

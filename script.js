@@ -42,3 +42,16 @@ function editarNivel(){
       inline: "center",
     });    
 }
+
+function finalizarQuizz() {
+  const  niveis = document.querySelector(".decidir-niveis");
+  const  finalizar = document.querySelector(".finalizar");
+  finalizar.classList.toggle("escondido");
+  niveis.classList.toggle("escondido");
+}
+
+function voltarHome(){
+  // reiniciar a pagina
+  //ira carregar a pagina 1
+  window.location.reload();
+}
