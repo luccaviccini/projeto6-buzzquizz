@@ -1,5 +1,6 @@
 // variáveis globais
-let numeroPerguntas = 0;
+let numeroPerguntas, numeroNiveis, urlImgQuizz, tituloQuizz;
+
 
 //simula a criacao de um quizz, no caso aparece quizzes feitos
 const criarQuizz = () => {
@@ -323,13 +324,13 @@ function voltarHome() {
 
 // funcao para chechar se todos os campos foram preenchidos
 function checkTitulo() {
-  const titulo = document.querySelector("#titulo-quizz").value;
-  const tamanhoTitulo = titulo.length;
-  if (titulo != "" && tamanhoTitulo >= 20 && tamanhoTitulo <= 65) {
+  tituloQuizz = document.querySelector("#titulo-quizz").value;
+  const tamanhoTitulo = tituloQuizz.length;
+  if (tituloQuizz != "" && tamanhoTitulo >= 20 && tamanhoTitulo <= 65) {
     return true;
   }
   else {
-    if (titulo == "") {
+    if (tituloQuizz == "") {
       alert("O campo titulo não pode estar vazio");
       return false;
     }
@@ -348,10 +349,9 @@ function checkTitulo() {
 }
 
 function checkUrl() {
-  const url = document.querySelector("#url-img-quizz").value; 
-  console.log((url));
+  urlImgQuizz = document.querySelector("#url-img-quizz").value; 
   try {
-    new URL(String(url));
+    new URL(String(urlImgQuizz));
     return true;
   } catch (err) {
     alert("URL invalida");
@@ -373,13 +373,13 @@ function checkNumeroPerguntas() {
 }
 
 function checkNumeroNiveis() {
-  const numeroNiveis = Number(document.querySelector("#qtd-niveis-quizz").value);
+  numeroNiveis = Number(document.querySelector("#qtd-niveis-quizz").value);
   if (numeroNiveis == "") {
     alert("O campo numero de niveis não pode estar vazio");
     return false;
   } else {
     if (numeroNiveis < 2) {
-      alert("O numero de niveis deve ser no minimo 3");
+      alert("O numero de niveis deve ser no minimo 2");
       return false;
     } else { return true; }
   }
