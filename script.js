@@ -5,19 +5,33 @@ function criarPerguntas() {
   const comecePeloComeco = document.querySelector(".comece-pelo-comeco");
   criarPerguntas.classList.toggle("escondido");
   comecePeloComeco.classList.toggle("escondido");
-  
+
+  const titulo_quizz = document.querySelector("#titulo-quizz").value;
+  const urlImgQuizz = document.querySelector("#url-img-quizz").value;
+  const qntPgtQuizz = document.querySelector("#qtd-pgt-quizz").value;
+  const qntNiveisQuizz = document.querySelector("#qtd-niveis-quizz").value;
+  if ((titulo_quizz != "") && (urlImgQuizz != "") && (qntPgtQuizz != "") && (qntNiveisQuizz != "")) {
+    console.log("ok");
+  }
+  else {
+    console.log("erro");
+  }
+  const btCriarPerguntas = document.querySelector("#bt_criar_perguntas");
+  btCriarPerguntas.classList.remove("desabilitado");
+  console.log(titulo_quizz, urlImgQuizz, qntPgtQuizz, qntNiveisQuizz);
+
 }
 
-function editarPergunta(){
-    const editar = document.querySelector("#editar-pergunta2");
-    editar.classList.toggle("escondido");
-    editar.children[1].children[1].scrollIntoView(
-      {
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      }
-    );    
+function editarPergunta() {
+  const editar = document.querySelector("#editar-pergunta2");
+  editar.classList.toggle("escondido");
+  editar.children[1].children[1].scrollIntoView(
+    {
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    }
+  );
 }
 
 function criarNiveis() {
@@ -32,25 +46,25 @@ function criarNiveis() {
   });
 }
 
-function editarNivel(){
-    const editar = document.querySelector("#editar-nivel2");
-    editar.classList.toggle("escondido");
-    console.log(editar.children[2]);
-    editar.children[2].scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "center",
-    });    
+function editarNivel() {
+  const editar = document.querySelector("#editar-nivel2");
+  editar.classList.toggle("escondido");
+  console.log(editar.children[2]);
+  editar.children[2].scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+    inline: "center",
+  });
 }
 
 function finalizarQuizz() {
-  const  niveis = document.querySelector(".decidir-niveis");
-  const  finalizar = document.querySelector(".finalizar");
+  const niveis = document.querySelector(".decidir-niveis");
+  const finalizar = document.querySelector(".finalizar");
   finalizar.classList.toggle("escondido");
   niveis.classList.toggle("escondido");
 }
 
-function voltarHome(){
+function voltarHome() {
   // reiniciar a pagina
   //ira carregar a pagina 1
   window.location.reload();

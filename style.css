@@ -244,3 +244,9 @@ button.voltar-home:hover {
     background: none;
     color: #999999
 }
+
+button.desabilitado {
+    background: #D1D1D1;
+    cursor: not-allowed;
+    pointer-events: none;
+}
