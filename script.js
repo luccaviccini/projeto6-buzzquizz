@@ -1,5 +1,3 @@
-// Definicao de variaveis globais
-
 //simula a criacao de um quizz, no caso aparece quizzes feitos
 const criarQuizz = () =>{
     let indicador = document.querySelector(".quizzUsuario");
@@ -48,6 +46,11 @@ const criarQuizz = () =>{
     'margin-bottom:60px;'+
     'height:100%;'+
     'align-items:unset';
+
+    const telaCriarQuizz = document.querySelector(".comece-pelo-comeco");
+    telaCriarQuizz.classList.remove("escondido");
+    const tela1 = document.querySelector(".Tela-1");
+    tela1.classList.add("esconde");
 }
 
 //LUCAS DUAN
