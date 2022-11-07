@@ -449,129 +449,182 @@ function objQuizz() {
     arrayEditarPerguntasIDs.push(`editar-pergunta${j + 1}`);
   }
 
-  // for (let i = 0; i < numeroPerguntas; i++) {
-  //   let editPergunta = document.querySelector(`#${arrayEditarPerguntasIDs[i]}`);
-  //   if (i === 0) {
-  //     console.log("ENTREI NO IF")
-  //     let textoP = editPergunta.querySelector(".pergunta-t3").children[1].value;
-  //     if (checkTexto(textoP)) {
-  //       objetoQuizz["questions"] = [{ title: textoP }];
-  //       console.log(objetoQuizz);
-  //     } else {
-  //       alert("Titulo nao adicionado");
-  //     }
-  //     let corFundoP =
-  //       editPergunta.querySelector(".pergunta-t3").children[2].value;
-  //     if (checkHex(corFundoP)) {
-  //       objetoQuizz["questions"][i]["color"] = corFundoP;
-  //       console.log(objetoQuizz);
-  //     } else {
-  //       alert("Cor de fundo nao adicionada");
-  //     }
-  //   } else {
-  //     console.log("ENTREI NO ELSE");
-  //     let textoP = editPergunta.querySelector(".pergunta-t3").children[0].value;
-  //     if (checkTexto(textoP)) {
-  //       objetoQuizz["questions"] = [{ title: textoP }];
-  //       console.log(objetoQuizz);
-  //     } else {
-  //       alert("Titulo nao adicionado");
-  //     }
-  //     let corFundoP =
-  //       editPergunta.querySelector(".pergunta-t3").children[1].value;
-  //     if (checkHex(corFundoP)) {
-  //       objetoQuizz["questions"][i]["color"] = corFundoP;
-  //       console.log(objetoQuizz);
-  //     } else {
-  //       alert("Cor de fundo nao adicionada");
-  //     }
-  //   }
-  //   let respostaCorreta =
-  //     editPergunta.querySelector(".resposta").children[1].value;
-  //   let urlImgRespCorreta =
-  //     editPergunta.querySelector(".resposta").children[2].value;
-  //   if (checkVazio(respostaCorreta)) {
-  //     objetoQuizz["questions"][i]["answers"] = [
-  //       {
-  //         text: respostaCorreta,
-  //         image: urlImgRespCorreta,
-  //         isCorrectAnswer: true,
-  //       },
-  //     ];
-  //     console.log(objetoQuizz);
-  //   }
-  //   let respostaIncorreta1 = editPergunta.querySelector(".respostas-incorretas")
-  //     .children[1].children[0].value;
-  //   let urlImgRespIncorreta1 = editPergunta.querySelector(
-  //     ".respostas-incorretas"
-  //   ).children[1].children[1].value;
+  
+  ///// pergunta 1 ----------------------------------------------------------------------------------
+  // const editarPergunta1 = document.querySelectorAll("#editar-pergunta1")[0];
 
-  //   if (checkVazio(respostaIncorreta1)) {
-  //     objetoQuizz["questions"][i]["answers"].push({
-  //       text: respostaIncorreta1,
-  //       image: urlImgRespIncorreta1,
-  //       isCorrectAnswer: false,
-  //     });
-  //     console.log(objetoQuizz);
-  //   }
-
-  //   let respostaIncorreta2 = editPergunta.querySelector(".respostas-incorretas")
-  //     .children[2].children[0].value;
-  //   let urlImgRespIncorreta2 = editPergunta.querySelector(
-  //     ".respostas-incorretas"
-  //   ).children[2].children[1].value;
-
-  //   objetoQuizz["questions"][i]["answers"].push({
-  //     text: respostaIncorreta2,
-  //     image: urlImgRespIncorreta2,
-  //     isCorrectAnswer: false,
-  //   });
+  // const textoP1 =
+  //   editarPergunta1.querySelector(".pergunta-t3").children[1].value;
+  // if (checkTexto(textoP1)) {
+  //   objetoQuizz["questions"] = [{ title: textoP1 }];
   //   console.log(objetoQuizz);
+  // } else {
+  //   alert("Titulo nao adicionado");
+  // }
 
-  //   let respostaIncorreta3 = editPergunta.querySelector(".respostas-incorretas")
-  //     .children[3].children[0].value;
-  //   let urlImgRespIncorreta3 = editPergunta.querySelector(
-  //     ".respostas-incorretas"
-  //   ).children[3].children[1].value;
+  // const corFundoP1 =
+  //   editarPergunta1.querySelector(".pergunta-t3").children[2].value;
+  // if (checkHex(corFundoP1)) {
+  //   objetoQuizz["questions"][0]["color"] = corFundoP1;
+  //   console.log(objetoQuizz);
+  // } else {
+  //   alert("Cor de fundo nao adicionada");
+  // }
 
-  //   objetoQuizz["questions"][i]["answers"].push({
-  //     text: respostaIncorreta3,
-  //     image: urlImgRespIncorreta3,
-  //     isCorrectAnswer: false,
-  //   });
+  // const respostaCorreta =
+  //   editarPergunta1.querySelector(".resposta").children[1].value;
+  // const urlImgRespCorreta =
+  //   editarPergunta1.querySelector(".resposta").children[2].value;
+  // if (checkVazio(respostaCorreta)) {
+  //   objetoQuizz["questions"][0]["answers"] = [
+  //     {
+  //       text: respostaCorreta,
+  //       image: urlImgRespCorreta,
+  //       isCorrectAnswer: true,
+  //     },
+  //   ];
   //   console.log(objetoQuizz);
   // }
 
-  const editarPergunta1 = document.querySelectorAll("#editar-pergunta1")[0];
+  // const respostaIncorreta1 = editarPergunta1.querySelector(
+  //   ".respostas-incorretas"
+  // ).children[1].children[0].value;
+  // const urlImgRespIncorreta1 = editarPergunta1.querySelector(
+  //   ".respostas-incorretas"
+  // ).children[1].children[1].value;
 
-  const textoP1 = editarPergunta1.querySelector(".pergunta-t3").children[1].value;
-  if (checkTexto(textoP1)) {
-    objetoQuizz['questions'] = [{'title': textoP1}];
-    console.log(objetoQuizz);
-  }else {alert("Titulo nao adicionado")}
+  // if (checkVazio(respostaIncorreta1)) {
+  //   objetoQuizz["questions"][0]["answers"].push({
+  //     text: respostaIncorreta1,
+  //     image: urlImgRespIncorreta1,
+  //     isCorrectAnswer: false,
+  //   });
+  //   console.log(objetoQuizz);
 
-  const corFundoP1 = editarPergunta1.querySelector(".pergunta-t3").children[2].value;
-  if (checkHex(corFundoP1)) {
-    objetoQuizz["questions"][0]['color'] = corFundoP1;
-    console.log(objetoQuizz);
-  }else {alert("Cor de fundo nao adicionada")}
 
-  const respostaCorreta = editarPergunta1.querySelector(".resposta").children[1].value;
-  const urlImgRespCorreta = editarPergunta1.querySelector(".resposta").children[2].value;
-  if (checkVazio(respostaCorreta)) {
-    objetoQuizz["questions"][0]['answers'] = [{'text': respostaCorreta, 'image': urlImgRespCorreta, 'isCorrectAnswer': true}];
-    console.log(objetoQuizz);
+
+    
+  // }
+
+  console.log(objetoQuizz);
+  ///// pergunta 1 ----------------------------------------------------------------------------------
+
+
+  for (let i=0; i<numeroPerguntas; i++ ){
+    if(i===0){
+      let editarPergunta = document.querySelector(`#${arrayEditarPerguntasIDs[i]}`);
+
+      let texto = editarPergunta.querySelector(".pergunta-t3").children[1].value;
+      let color = editarPergunta.querySelector(".pergunta-t3").children[2].value;
+      let respostaCorreta = editarPergunta.querySelector(".resposta").children[1].value;
+      let urlImgRespCorreta = editarPergunta.querySelector(".resposta").children[2].value;
+      let respostaIncorreta1 = editarPergunta.querySelector(".respostas-incorretas").children[1].children[0].value;
+      let urlImgRespIncorreta1 = editarPergunta.querySelector(".respostas-incorretas").children[1].children[1].value;
+
+      objetoQuizz["questions"] = [
+        {
+          title: texto,
+          color: color,
+          answers: [{
+            text: respostaCorreta,
+            image: urlImgRespCorreta,
+            isCorrectAnswer: true
+          },
+          {
+            text: respostaIncorreta1,
+            image: urlImgRespIncorreta1,
+            isCorrectAnswer: false
+          }
+          ]
+      }];
+
+      checkNullRespIncorretas(editarPergunta, i);
+       
+    } else{
+      let editarPergunta = document.querySelector(`#${arrayEditarPerguntasIDs[i]}`);
+
+      let texto = editarPergunta.querySelector(".pergunta-t3").children[0].value;
+      let color = editarPergunta.querySelector(".pergunta-t3").children[1].value;
+      let respostaCorreta = editarPergunta.querySelector(".resposta").children[1].value;
+      let urlImgRespCorreta = editarPergunta.querySelector(".resposta").children[2].value;
+      let respostaIncorreta1 = editarPergunta.querySelector(".respostas-incorretas").children[1].children[0].value;
+      let urlImgRespIncorreta1 = editarPergunta.querySelector(".respostas-incorretas").children[1].children[1].value;
+
+      objetoQuizz["questions"].push({
+        title: texto,
+        color: color,
+        answers: [
+          {
+            text: respostaCorreta,
+            image: urlImgRespCorreta,
+            isCorrectAnswer: true,
+          },
+          {
+            text: respostaIncorreta1,
+            image: urlImgRespIncorreta1,
+            isCorrectAnswer: false,
+          }
+        ],
+      });
+
+      checkNullRespIncorretas(editarPergunta, i);
+  
+    }
   }
 
-  const respostaIncorreta1 = editarPergunta1.querySelector(".respostas-incorretas").children[1].children[0].value;
-  const urlImgRespIncorreta1 = editarPergunta1.querySelector(".respostas-incorretas").children[1].children[1].value;
-
-  if (checkVazio(respostaIncorreta1)) {
-    objetoQuizz["questions"][0]['answers'].push({'text': respostaIncorreta1, 'image': urlImgRespIncorreta1, 'isCorrectAnswer': false});
-    console.log(objetoQuizz);
+  function checkNullRespIncorretas(editarPergunta,i){
+    //checar respostas incorretas individualmente 
+    //se for null, nao adicionar ao objeto
+    const resIncorreta2 = editarPergunta.querySelector(".respostas-incorretas").children[2].children[0].value;
+    const urlImgRespIncorreta2 = editarPergunta.querySelector(".respostas-incorretas").children[2].children[1].value;
+    if(resIncorreta2 != ''){
+      objetoQuizz["questions"][i]["answers"].push({
+        text: resIncorreta2,
+        image: urlImgRespIncorreta2,
+        isCorrectAnswer: false,
+      });
+    }
+    // checar resposta 3
+    const resIncorreta3 = editarPergunta.querySelector(".respostas-incorretas").children[3].children[0].value;
+    const urlImgRespIncorreta3 = editarPergunta.querySelector(".respostas-incorretas").children[3].children[1].value;
+    if (resIncorreta3 != "") {
+      objetoQuizz["questions"][i]["answers"].push({
+        text: resIncorreta3,
+        image: urlImgRespIncorreta3,
+        isCorrectAnswer: false,
+      });
+    }
   }
+  ///// pergunta 2 ----------------------------------------------------------------------------------
+  // const editarPergunta2 = document.querySelectorAll("#editar-pergunta2")[0];
 
-  console.log(objetoQuizz)
+  // const textoP2 = editarPergunta2.querySelector(".pergunta-t3").children[0].value;
+  // const colorP2 = editarPergunta2.querySelector(".pergunta-t3").children[1].value;
+  
+  // const respostaCorreta2 = editarPergunta2.querySelector(".resposta").children[1].value;
+  // const urlImgRespCorreta2 = editarPergunta2.querySelector(".resposta").children[2].value;
+  // objetoQuizz["questions"].push({ 
+  //   title: textoP2,
+  //   color: colorP2,
+  //   answers: [{
+  //     text: respostaCorreta2,
+  //     image: urlImgRespCorreta2,
+  //     isCorrectAnswer: true
+  //   }
+  //   ] });
+
+  // const respostaIncorreta2 = editarPergunta2.querySelector(".respostas-incorretas").children[1].children[0].value;
+  // const urlImgRespIncorreta2 = editarPergunta2.querySelector(".respostas-incorretas").children[1].children[1].value;
+  // objetoQuizz["questions"][1]["answers"].push({
+  //   text: respostaIncorreta2,
+  //   image: urlImgRespIncorreta2,
+  //   isCorrectAnswer: false,
+  // });
+  
+
+  console.log(objetoQuizz["questions"]);
+
+  ///// pergunta 2 ----------------------------------------------------------------------------------
 }
 
 function editarNivel(editar_nivel) {
