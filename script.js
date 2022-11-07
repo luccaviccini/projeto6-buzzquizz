@@ -1,6 +1,7 @@
 // variáveis globais
 let numeroPerguntas, numeroNiveis, urlImgQuizz, tituloQuizz;
 let objetoQuizz = {};
+const apiURLsendQuizz = "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 
 //simula a criacao de um quizz, no caso aparece quizzes feitos
 const criarQuizz = () => {
@@ -439,72 +440,15 @@ function criarNiveis() {
     inline: "center",
   });
 
-  objQuizz();
+  objQuizzPerguntas();
 }
 
-function objQuizz() {
+function objQuizzPerguntas() {
   // criando array para armazenar ids com numero de perguntas
   const arrayEditarPerguntasIDs = [];
   for (let j = 0; j < numeroPerguntas; j++) {
     arrayEditarPerguntasIDs.push(`editar-pergunta${j + 1}`);
   }
-
-  
-  ///// pergunta 1 ----------------------------------------------------------------------------------
-  // const editarPergunta1 = document.querySelectorAll("#editar-pergunta1")[0];
-
-  // const textoP1 =
-  //   editarPergunta1.querySelector(".pergunta-t3").children[1].value;
-  // if (checkTexto(textoP1)) {
-  //   objetoQuizz["questions"] = [{ title: textoP1 }];
-  //   console.log(objetoQuizz);
-  // } else {
-  //   alert("Titulo nao adicionado");
-  // }
-
-  // const corFundoP1 =
-  //   editarPergunta1.querySelector(".pergunta-t3").children[2].value;
-  // if (checkHex(corFundoP1)) {
-  //   objetoQuizz["questions"][0]["color"] = corFundoP1;
-  //   console.log(objetoQuizz);
-  // } else {
-  //   alert("Cor de fundo nao adicionada");
-  // }
-
-  // const respostaCorreta =
-  //   editarPergunta1.querySelector(".resposta").children[1].value;
-  // const urlImgRespCorreta =
-  //   editarPergunta1.querySelector(".resposta").children[2].value;
-  // if (checkVazio(respostaCorreta)) {
-  //   objetoQuizz["questions"][0]["answers"] = [
-  //     {
-  //       text: respostaCorreta,
-  //       image: urlImgRespCorreta,
-  //       isCorrectAnswer: true,
-  //     },
-  //   ];
-  //   console.log(objetoQuizz);
-  // }
-
-  // const respostaIncorreta1 = editarPergunta1.querySelector(
-  //   ".respostas-incorretas"
-  // ).children[1].children[0].value;
-  // const urlImgRespIncorreta1 = editarPergunta1.querySelector(
-  //   ".respostas-incorretas"
-  // ).children[1].children[1].value;
-
-  // if (checkVazio(respostaIncorreta1)) {
-  //   objetoQuizz["questions"][0]["answers"].push({
-  //     text: respostaIncorreta1,
-  //     image: urlImgRespIncorreta1,
-  //     isCorrectAnswer: false,
-  //   });
-  //   console.log(objetoQuizz);
-
-
-
-    
-  // }
 
   console.log(objetoQuizz);
   ///// pergunta 1 ----------------------------------------------------------------------------------
@@ -595,36 +539,8 @@ function objQuizz() {
       });
     }
   }
-  ///// pergunta 2 ----------------------------------------------------------------------------------
-  // const editarPergunta2 = document.querySelectorAll("#editar-pergunta2")[0];
 
-  // const textoP2 = editarPergunta2.querySelector(".pergunta-t3").children[0].value;
-  // const colorP2 = editarPergunta2.querySelector(".pergunta-t3").children[1].value;
-  
-  // const respostaCorreta2 = editarPergunta2.querySelector(".resposta").children[1].value;
-  // const urlImgRespCorreta2 = editarPergunta2.querySelector(".resposta").children[2].value;
-  // objetoQuizz["questions"].push({ 
-  //   title: textoP2,
-  //   color: colorP2,
-  //   answers: [{
-  //     text: respostaCorreta2,
-  //     image: urlImgRespCorreta2,
-  //     isCorrectAnswer: true
-  //   }
-  //   ] });
-
-  // const respostaIncorreta2 = editarPergunta2.querySelector(".respostas-incorretas").children[1].children[0].value;
-  // const urlImgRespIncorreta2 = editarPergunta2.querySelector(".respostas-incorretas").children[1].children[1].value;
-  // objetoQuizz["questions"][1]["answers"].push({
-  //   text: respostaIncorreta2,
-  //   image: urlImgRespIncorreta2,
-  //   isCorrectAnswer: false,
-  // });
-  
-
-  console.log(objetoQuizz["questions"]);
-
-  ///// pergunta 2 ----------------------------------------------------------------------------------
+ 
 }
 
 function editarNivel(editar_nivel) {
@@ -632,7 +548,6 @@ function editarNivel(editar_nivel) {
   const editar = document.querySelector(`#${editarNivelID}`);
   //const editar = document.querySelector("#editar-nivel2");
   editar.classList.toggle("escondido");
-  console.log(editar.children[2]);
   editar.children[2].scrollIntoView({
     behavior: "smooth",
     block: "center",
@@ -646,8 +561,7 @@ function finalizarQuizz() {
   finalizar.classList.toggle("escondido");
   niveis.classList.toggle("escondido");
 
-  console.log(urlImgQuizz);
-  console.log(tituloQuizz);
+  
 
   finalizar.innerHTML += `
             <h2>Seu quizz está pronto! </h2>
@@ -661,6 +575,62 @@ function finalizarQuizz() {
             <button onclick="" type="submit"> Acessar Quizz</button>
             <button onclick="voltarHome()" class="voltar-home">Voltar para home</button>
   `;
+
+  objQuizzNivel();
+  SendQuizz();
+}
+
+function objQuizzNivel(){
+  const arrayEditarNivelIDs = [];
+  for (let j = 0; j < numeroNiveis; j++) {
+    arrayEditarNivelIDs.push(`editar-nivel${j + 2}`);
+  }
+
+  for (let i=0; i<numeroNiveis; i++){
+    
+
+    if(i==0){
+      let editarNivel = document.querySelector('.nivel-t3');
+      let tituloNivel = editarNivel.children[2].value;
+      let urlImgNivel = editarNivel.children[4].value;
+      let descricao = editarNivel.children[5].value;
+      let porcentagem = editarNivel.children[3].value;
+
+      objetoQuizz["levels"] = [{
+        title: tituloNivel,
+        image: urlImgNivel,
+        text: descricao,
+        minValue: porcentagem,
+      }
+      ]  
+  } else {
+    let editarNivel = document.querySelector(`#editar-nivel${i+1}`);
+    let tituloNivel = editarNivel.children[0].value;
+    let urlImgNivel = editarNivel.children[2].value;
+    let descricao = editarNivel.children[3].value;
+    let porcentagem = editarNivel.children[1].value;
+
+    objetoQuizz["levels"].push({
+      title: tituloNivel,
+      image: urlImgNivel,
+      text: descricao,
+      minValue: porcentagem,
+    });
+    };
+  };
+  console.log(objetoQuizz);
+}
+
+function SendQuizz(){
+  const promisse = axios(
+    {
+      method: "POST",
+      url: apiURLsendQuizz,
+      data: objetoQuizz
+    }
+  )
+  promisse.then( (response) => {console.log(response)})
+  promisse.catch( (error) => {console.log(error)})
 }
 
 function voltarHome() {
@@ -772,4 +742,4 @@ function checkRespostaCorreta(resposta) {
   }
 }
 
-function checkRespostaErrada(resposta) {}
+
