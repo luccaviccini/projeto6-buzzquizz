@@ -1,5 +1,6 @@
 // variáveis globais
 let numeroPerguntas, numeroNiveis, urlImgQuizz, tituloQuizz;
+let objetoQuizz = {};
 
 //simula a criacao de um quizz, no caso aparece quizzes feitos
 const criarQuizz = () => {
@@ -262,7 +263,7 @@ function voltar() {
 function criarPerguntas() {
   const comecePeloComeco = document.querySelector(".comece-pelo-comeco");
   const crieSuasPerguntas = document.querySelector(".crie-suas-perguntas");
-  
+
   tituloQuizz = document.querySelector("#titulo-quizz").value;
   numeroPerguntas = Number(document.querySelector("#qtd-pgt-quizz").value);
   urlImgQuizz = document.querySelector("#url-img-quizz").value;
@@ -274,6 +275,8 @@ function criarPerguntas() {
     checkNumeroPerguntas(numeroPerguntas) &&
     checkNumeroNiveis(numeroNiveis)
   ) {
+    objetoQuizz["title"] = tituloQuizz;
+    objetoQuizz["image"] = urlImgQuizz;
     console.log("checks ok");
     comecePeloComeco.classList.toggle("escondido");
 
@@ -284,8 +287,8 @@ function criarPerguntas() {
               <div class="container-h3">
                   <h3>Pergunta 1</h3>
               </div>
-              <input id="texto-pergunta" type="text" placeholder="Texto da pergunta">
-              <input id="cor-de-fundo-pergunta" type="text" placeholder="Cor de fundo da pergunta">
+              <input id="texto-pergunta1" type="text" placeholder="Texto da pergunta">
+              <input id="cor-de-fundo-pergunta1" type="text" placeholder="Cor de fundo da pergunta">
           </div>
           <div class="resposta">
               <div class="container-h3">
@@ -323,15 +326,15 @@ function criarPerguntas() {
           </nav>
           <div id="editar-pergunta${i}" class="editar-pergunta escondido">
               <div class="pergunta-t3">
-                  <input id="pergunta-quizz" type="text" placeholder="Pergunta ${i}">
-                  <input id="url-img-pergunta-quizz" type="text" placeholder="Cor de fundo da pergunta">
+                  <input id="texto-pergunta${i}" type="text" placeholder="Texto da Pergunta ${i}">
+                  <input id="cor-de-fundo-pergunta${i}" type="text" placeholder="Cor de fundo da pergunta">
               </div>
               <div class="resposta">
                   <div class="container-h3">
                       <h3>Resposta correta</h3>
                   </div>
-                  <input id="pergunta-quizz" type="text" placeholder="Resposta correta">
-                  <input id="url-img-pergunta-quizz" type="text" placeholder="URL da imagem">
+                  <input id="resposta-correta" type="text" placeholder="Resposta correta">
+                  <input id="url-img-resposta-correta" type="text" placeholder="URL da imagem">
               </div>
               <div class="respostas-incorretas">
                   <div class="container-h3">
@@ -370,6 +373,8 @@ function criarPerguntas() {
   } else {
     console.log("checks não ok");
   }
+
+  console.log(objetoQuizz);
 }
 
 function editarPergunta(editar_pergunta) {
@@ -420,7 +425,7 @@ function criarNiveis() {
   niveis.innerHTML += `
   <button onclick="finalizarQuizz()" type="submit">Finalizar Quizz</button>
   `;
- 
+
   const img = document.querySelectorAll(".decidir-niveis .menu-editar>img");
   img.forEach(
     (imagem) =>
@@ -428,11 +433,145 @@ function criarNiveis() {
         editarNivel(this);
       })
   );
-   niveis.children[0].scrollIntoView({
-     behavior: "auto",
-     block: "center",
-     inline: "center",
-   });
+  niveis.children[0].scrollIntoView({
+    behavior: "auto",
+    block: "center",
+    inline: "center",
+  });
+
+  objQuizz();
+}
+
+function objQuizz() {
+  // criando array para armazenar ids com numero de perguntas
+  const arrayEditarPerguntasIDs = [];
+  for (let j = 0; j < numeroPerguntas; j++) {
+    arrayEditarPerguntasIDs.push(`editar-pergunta${j + 1}`);
+  }
+
+  // for (let i = 0; i < numeroPerguntas; i++) {
+  //   let editPergunta = document.querySelector(`#${arrayEditarPerguntasIDs[i]}`);
+  //   if (i === 0) {
+  //     console.log("ENTREI NO IF")
+  //     let textoP = editPergunta.querySelector(".pergunta-t3").children[1].value;
+  //     if (checkTexto(textoP)) {
+  //       objetoQuizz["questions"] = [{ title: textoP }];
+  //       console.log(objetoQuizz);
+  //     } else {
+  //       alert("Titulo nao adicionado");
+  //     }
+  //     let corFundoP =
+  //       editPergunta.querySelector(".pergunta-t3").children[2].value;
+  //     if (checkHex(corFundoP)) {
+  //       objetoQuizz["questions"][i]["color"] = corFundoP;
+  //       console.log(objetoQuizz);
+  //     } else {
+  //       alert("Cor de fundo nao adicionada");
+  //     }
+  //   } else {
+  //     console.log("ENTREI NO ELSE");
+  //     let textoP = editPergunta.querySelector(".pergunta-t3").children[0].value;
+  //     if (checkTexto(textoP)) {
+  //       objetoQuizz["questions"] = [{ title: textoP }];
+  //       console.log(objetoQuizz);
+  //     } else {
+  //       alert("Titulo nao adicionado");
+  //     }
+  //     let corFundoP =
+  //       editPergunta.querySelector(".pergunta-t3").children[1].value;
+  //     if (checkHex(corFundoP)) {
+  //       objetoQuizz["questions"][i]["color"] = corFundoP;
+  //       console.log(objetoQuizz);
+  //     } else {
+  //       alert("Cor de fundo nao adicionada");
+  //     }
+  //   }
+  //   let respostaCorreta =
+  //     editPergunta.querySelector(".resposta").children[1].value;
+  //   let urlImgRespCorreta =
+  //     editPergunta.querySelector(".resposta").children[2].value;
+  //   if (checkVazio(respostaCorreta)) {
+  //     objetoQuizz["questions"][i]["answers"] = [
+  //       {
+  //         text: respostaCorreta,
+  //         image: urlImgRespCorreta,
+  //         isCorrectAnswer: true,
+  //       },
+  //     ];
+  //     console.log(objetoQuizz);
+  //   }
+  //   let respostaIncorreta1 = editPergunta.querySelector(".respostas-incorretas")
+  //     .children[1].children[0].value;
+  //   let urlImgRespIncorreta1 = editPergunta.querySelector(
+  //     ".respostas-incorretas"
+  //   ).children[1].children[1].value;
+
+  //   if (checkVazio(respostaIncorreta1)) {
+  //     objetoQuizz["questions"][i]["answers"].push({
+  //       text: respostaIncorreta1,
+  //       image: urlImgRespIncorreta1,
+  //       isCorrectAnswer: false,
+  //     });
+  //     console.log(objetoQuizz);
+  //   }
+
+  //   let respostaIncorreta2 = editPergunta.querySelector(".respostas-incorretas")
+  //     .children[2].children[0].value;
+  //   let urlImgRespIncorreta2 = editPergunta.querySelector(
+  //     ".respostas-incorretas"
+  //   ).children[2].children[1].value;
+
+  //   objetoQuizz["questions"][i]["answers"].push({
+  //     text: respostaIncorreta2,
+  //     image: urlImgRespIncorreta2,
+  //     isCorrectAnswer: false,
+  //   });
+  //   console.log(objetoQuizz);
+
+  //   let respostaIncorreta3 = editPergunta.querySelector(".respostas-incorretas")
+  //     .children[3].children[0].value;
+  //   let urlImgRespIncorreta3 = editPergunta.querySelector(
+  //     ".respostas-incorretas"
+  //   ).children[3].children[1].value;
+
+  //   objetoQuizz["questions"][i]["answers"].push({
+  //     text: respostaIncorreta3,
+  //     image: urlImgRespIncorreta3,
+  //     isCorrectAnswer: false,
+  //   });
+  //   console.log(objetoQuizz);
+  // }
+
+  const editarPergunta1 = document.querySelectorAll("#editar-pergunta1")[0];
+
+  const textoP1 = editarPergunta1.querySelector(".pergunta-t3").children[1].value;
+  if (checkTexto(textoP1)) {
+    objetoQuizz['questions'] = [{'title': textoP1}];
+    console.log(objetoQuizz);
+  }else {alert("Titulo nao adicionado")}
+
+  const corFundoP1 = editarPergunta1.querySelector(".pergunta-t3").children[2].value;
+  if (checkHex(corFundoP1)) {
+    objetoQuizz["questions"][0]['color'] = corFundoP1;
+    console.log(objetoQuizz);
+  }else {alert("Cor de fundo nao adicionada")}
+
+  const respostaCorreta = editarPergunta1.querySelector(".resposta").children[1].value;
+  const urlImgRespCorreta = editarPergunta1.querySelector(".resposta").children[2].value;
+  if (checkVazio(respostaCorreta)) {
+    objetoQuizz["questions"][0]['answers'] = [{'text': respostaCorreta, 'image': urlImgRespCorreta, 'isCorrectAnswer': true}];
+    console.log(objetoQuizz);
+  }
+
+  const respostaIncorreta1 = editarPergunta1.querySelector(".respostas-incorretas").children[1].children[0].value;
+  const urlImgRespIncorreta1 = editarPergunta1.querySelector(".respostas-incorretas").children[1].children[1].value;
+
+  if (checkVazio(respostaIncorreta1)) {
+    objetoQuizz["questions"][0]['answers'].push({'text': respostaIncorreta1, 'image': urlImgRespIncorreta1, 'isCorrectAnswer': false});
+    console.log(objetoQuizz);
+  }
+
+  console.log(objetoQuizz)
 }
 
 function editarNivel(editar_nivel) {
@@ -479,7 +618,6 @@ function voltarHome() {
 
 // funcao para chechar se todos os campos foram preenchidos
 function checkTitulo(titulo) {
-  
   const tamanhoTitulo = titulo.length;
   if (titulo != "" && tamanhoTitulo >= 20 && tamanhoTitulo <= 65) {
     return true;
@@ -500,7 +638,6 @@ function checkTitulo(titulo) {
 }
 
 function checkUrl(url) {
-  
   try {
     new URL(String(url));
     return true;
@@ -559,16 +696,16 @@ function checkTexto(texto) {
       if (tamanhoTexto < 20) {
         alert("O texto deve ter no minimo 20 caracteres");
         return false;
-      } 
+      }
     }
   }
 }
 
-function checkVazio(box){
-  if(box == ""){
+function checkVazio(box) {
+  if (box == "") {
     alert("O campo não pode estar vazio");
     return false;
-  }else{
+  } else {
     return true;
   }
 }
@@ -582,6 +719,4 @@ function checkRespostaCorreta(resposta) {
   }
 }
 
-function checkRespostaErrada(resposta) {
-
-}
+function checkRespostaErrada(resposta) {}
