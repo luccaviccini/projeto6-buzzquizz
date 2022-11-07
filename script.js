@@ -262,14 +262,17 @@ function voltar() {
 function criarPerguntas() {
   const comecePeloComeco = document.querySelector(".comece-pelo-comeco");
   const crieSuasPerguntas = document.querySelector(".crie-suas-perguntas");
-
+  
+  tituloQuizz = document.querySelector("#titulo-quizz").value;
   numeroPerguntas = Number(document.querySelector("#qtd-pgt-quizz").value);
+  urlImgQuizz = document.querySelector("#url-img-quizz").value;
+  numeroNiveis = document.querySelector("#qtd-niveis-quizz").value;
 
   if (
-    checkTitulo() &&
-    checkUrl() &&
-    checkNumeroPerguntas() &&
-    checkNumeroNiveis()
+    checkTitulo(tituloQuizz) &&
+    checkUrl(urlImgQuizz) &&
+    checkNumeroPerguntas(numeroPerguntas) &&
+    checkNumeroNiveis(numeroNiveis)
   ) {
     console.log("checks ok");
     comecePeloComeco.classList.toggle("escondido");
@@ -281,7 +284,7 @@ function criarPerguntas() {
               <div class="container-h3">
                   <h3>Pergunta 1</h3>
               </div>
-              <input id="texto-pergunta" type="text" placeholder="Texto da pergunda">
+              <input id="texto-pergunta" type="text" placeholder="Texto da pergunta">
               <input id="cor-de-fundo-pergunta" type="text" placeholder="Cor de fundo da pergunta">
           </div>
           <div class="resposta">
@@ -334,18 +337,18 @@ function criarPerguntas() {
                   <div class="container-h3">
                       <h3>Respostas incorretas</h3>
                   </div>
-                  <div class="container-inputs">
-                      <input id="pergunta-quizz" type="text" placeholder="Resposta incorreta 1">
-                      <input id="url-img-pergunta-quizz" type="text" placeholder="URL da imagem 3">
-                  </div>
-                  <div class="container-inputs">
-                      <input id="pergunta-quizz" type="text" placeholder="Resposta incorreta 2">
-                      <input id="url-img-pergunta-quizz" type="text" placeholder="URL da imagem 3">
-                  </div>
-                  <div class="container-inputs">
-                      <input id="pergunta-quizz" type="text" placeholder="Resposta incorreta 3">
-                      <input id="url-img-pergunta-quizz" type="text" placeholder="URL da imagem 3">
-                  </div>
+              <div class="container-inputs">
+                  <input id="resposta-incorreta-1" type="text" placeholder="Resposta incorreta 1">
+                  <input id="url-img-resp-incorreta-1" type="text" placeholder="URL da imagem 3">
+              </div>
+              <div class="container-inputs">
+                  <input id="resposta-incorreta-2" type="text" placeholder="Resposta incorreta 2">
+                  <input id="url-img-resp-incorreta-2" type="text" placeholder="URL da imagem 3">
+              </div>
+              <div class="container-inputs">
+                  <input id="resposta-incorreta-3" type="text" placeholder="Resposta incorreta 3">
+                  <input id="url-img-resp-incorreta-3" type="text" placeholder="URL da imagem 3">
+              </div>
               </div>
           </div>
 
@@ -475,13 +478,13 @@ function voltarHome() {
 }
 
 // funcao para chechar se todos os campos foram preenchidos
-function checkTitulo() {
-  tituloQuizz = document.querySelector("#titulo-quizz").value;
-  const tamanhoTitulo = tituloQuizz.length;
-  if (tituloQuizz != "" && tamanhoTitulo >= 20 && tamanhoTitulo <= 65) {
+function checkTitulo(titulo) {
+  
+  const tamanhoTitulo = titulo.length;
+  if (titulo != "" && tamanhoTitulo >= 20 && tamanhoTitulo <= 65) {
     return true;
   } else {
-    if (tituloQuizz == "") {
+    if (titulo == "") {
       alert("O campo titulo não pode estar vazio");
       return false;
     } else {
@@ -496,10 +499,10 @@ function checkTitulo() {
   }
 }
 
-function checkUrl() {
-  urlImgQuizz = document.querySelector("#url-img-quizz").value;
+function checkUrl(url) {
+  
   try {
-    new URL(String(urlImgQuizz));
+    new URL(String(url));
     return true;
   } catch (err) {
     alert("URL invalida");
@@ -507,12 +510,12 @@ function checkUrl() {
   }
 }
 
-function checkNumeroPerguntas() {
-  if (numeroPerguntas == "") {
+function checkNumeroPerguntas(numPerguntas) {
+  if (numPerguntas == "") {
     alert("O campo numero de perguntas não pode estar vazio");
     return false;
   } else {
-    if (numeroPerguntas < 3) {
+    if (numPerguntas < 3) {
       alert("O numero de perguntas deve ser no minimo 3");
       return false;
     } else {
@@ -521,7 +524,7 @@ function checkNumeroPerguntas() {
   }
 }
 
-function checkNumeroNiveis() {
+function checkNumeroNiveis(numeroNiveis) {
   if (numeroNiveis == "") {
     alert("O campo numero de niveis não pode estar vazio");
     return false;
@@ -542,4 +545,43 @@ function checkHex(numeroHex) {
   } else {
     return false;
   }
+}
+
+function checkTexto(texto) {
+  const tamanhoTexto = texto.length;
+  if (texto != "" && tamanhoTexto >= 20) {
+    return true;
+  } else {
+    if (texto == "") {
+      alert("O campo texto não pode estar vazio");
+      return false;
+    } else {
+      if (tamanhoTexto < 20) {
+        alert("O texto deve ter no minimo 20 caracteres");
+        return false;
+      } 
+    }
+  }
+}
+
+function checkVazio(box){
+  if(box == ""){
+    alert("O campo não pode estar vazio");
+    return false;
+  }else{
+    return true;
+  }
+}
+
+function checkRespostaCorreta(resposta) {
+  if (resposta == "") {
+    alert("O campo resposta correta não pode estar vazio");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function checkRespostaErrada(resposta) {
+
 }
