@@ -1,7 +1,6 @@
 // variáveis globais
 let numeroPerguntas, numeroNiveis, urlImgQuizz, tituloQuizz;
 
-
 //simula a criacao de um quizz, no caso aparece quizzes feitos
 const criarQuizz = () => {
   let indicador = document.querySelector(".quizzUsuario");
@@ -44,12 +43,13 @@ const criarQuizz = () => {
         </div>
     </div>
     `;
-  meuQuizz.style = 'border: 0px;' +
-    'background: white;' +
-    'margin: 0 auto;' +
-    'margin-bottom:60px;' +
-    'height:100%;' +
-    'align-items:unset';
+  meuQuizz.style =
+    "border: 0px;" +
+    "background: white;" +
+    "margin: 0 auto;" +
+    "margin-bottom:60px;" +
+    "height:100%;" +
+    "align-items:unset";
 
   const telaCriarQuizz = document.querySelector(".comece-pelo-comeco");
   const maint3 = document.querySelector(".main-t3");
@@ -57,18 +57,20 @@ const criarQuizz = () => {
   maint3.classList.remove("esconde");
   const tela1 = document.querySelector(".Tela-1");
   tela1.classList.add("esconde");
-}
+};
 
 //LUCAS DUAN
-let info;//ira armazenar as informaçoes do quiz
+let info; //ira armazenar as informaçoes do quiz
 let acertos;
 let respondidas;
 //pede o quiz escolhido da api
 function começar(identidade) {
-  const apaga = document.querySelector('.corpoquiz');
+  const apaga = document.querySelector(".corpoquiz");
   apaga.innerHTML = `<ul>
     </ul>`;
-  const iniciar = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${identidade}`);
+  const iniciar = axios.get(
+    `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${identidade}`
+  );
   iniciar.then(renderizarquiz);
 }
 //LUCAS DUAN
@@ -79,7 +81,6 @@ let listQuizzes = [];
 function carregarQuizzes(resposta) {
   listQuizzes = resposta.data;
   renderizarQuizzes(listQuizzes);
-
 }
 
 //mostra o erro no console
@@ -87,7 +88,9 @@ function tratarErro(erro) {
   console.log(erro.response);
 }
 
-const quizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+const quizzes = axios.get(
+  "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes"
+);
 quizzes.then(carregarQuizzes);
 quizzes.catch(tratarErro);
 
@@ -99,10 +102,9 @@ function renderizarQuizzes(Quizzes) {
   for (let i = 0; i < Quizzes.length; i++) {
     const Quizz = Quizzes[i];
     meuQuizz.innerHTML += QuizzDiv(Quizz);
-
   }
 }
-var questionario = '';
+var questionario = "";
 function puxarId(Quizz) {
   questionario = Quizz;
   const tela2 = document.getElementById("respondequiz");
@@ -125,24 +127,24 @@ function QuizzDiv(Quizz) {
 const apagar = (seletor) => {
   seletor = seletor.parentNode;
   seletor.parentNode.remove();
-}
+};
 //LUCAS DUAN
 //imprime o quiz na tela
 function renderizarquiz(resposta) {
-  info = resposta.data;//atribui as infomaçoes da api a variavel info
+  info = resposta.data; //atribui as infomaçoes da api a variavel info
   acertos = 0;
   respondidas = 0;
   //seleciona a div banner
-  const banner = document.querySelector('.banner');
+  const banner = document.querySelector(".banner");
 
   //cria o banner
-  banner.innerHTML = '';
+  banner.innerHTML = "";
   banner.style.backgroundImage = `url(${info.image})`;
   banner.innerHTML += `<p>${info.title}</p>`;
 
   //seleciona a tag ul
-  const quiz = document.querySelector('ul');
-  quiz.innerHTML = '';
+  const quiz = document.querySelector("ul");
+  quiz.innerHTML = "";
 
   //cria as caixas das perguntas
   for (let i = 0; i < info.questions.length; i++) {
@@ -154,10 +156,10 @@ function renderizarquiz(resposta) {
             </div>
             <div id="${i}" class="opçoes">
         </div>
-        </li>`
+        </li>`;
 
     //muda a cor da pergunta
-    document.getElementById('cor' + i).style.backgroundColor = perguntas.color;
+    document.getElementById("cor" + i).style.backgroundColor = perguntas.color;
     const opçoes = document.getElementById(i);
     let aleatorio = perguntas.answers;
     randomiza(aleatorio);
@@ -167,19 +169,17 @@ function renderizarquiz(resposta) {
       const respostas = aleatorio[a];
       switch (respostas.isCorrectAnswer) {
         case true:
-          opçoes.innerHTML +=
-            `<div class = "certa caixa${i}" onclick="mudacor(this,${i});verifica(${respostas.isCorrectAnswer})">
+          opçoes.innerHTML += `<div class = "certa caixa${i}" onclick="mudacor(this,${i});verifica(${respostas.isCorrectAnswer})">
                         <input type ="image" src="${respostas.image}"/>
                         <label>${respostas.text}</label>
-                    </div>`
+                    </div>`;
           break;
 
         default:
-          opçoes.innerHTML +=
-            `<div class = "caixa${i}" onclick="mudacor(this,${i});verifica(${respostas.isCorrectAnswer})">
+          opçoes.innerHTML += `<div class = "caixa${i}" onclick="mudacor(this,${i});verifica(${respostas.isCorrectAnswer})">
                         <input type ="image" src="${respostas.image}"/>
                         <label>${respostas.text}</label>
-                    </div>`
+                    </div>`;
           break;
       }
     }
@@ -193,7 +193,7 @@ function randomiza(array) {
 }
 function mudacor(clique, classe) {
   let mudar = document.querySelectorAll(".caixa" + classe);
-  mudar.forEach(outras => {
+  mudar.forEach((outras) => {
     let mude = outras.classList;
     mude.add("naoescolhida");
     outras.style.color = "#FF4B4B";
@@ -224,7 +224,7 @@ function verifica(escolha) {
 }
 function resultado() {
   const pontuaçao = Math.round((acertos / respondidas) * 100);
-  const result = document.querySelector('.corpoquiz');
+  const result = document.querySelector(".corpoquiz");
   let nivel = [];
   for (let i = 0; i < info.levels.length - 1; i++) {
     nivel = info.levels[i];
@@ -245,11 +245,11 @@ function resultado() {
         </div>
     </section>
     <button class="reiniciar" onclick="começar(questionario)">Reiniciar quiz</button>
-    <button class="home" onclick="voltar()">Voltar pra home</button>`
+    <button class="home" onclick="voltar()">Voltar pra home</button>`;
 }
 function voltar() {
-  const pagina = document.querySelector('#respondequiz');
-  pagina.classList.add('esconde');
+  const pagina = document.querySelector("#respondequiz");
+  pagina.classList.add("esconde");
   const tela1 = document.querySelector(".Tela-1");
   tela1.classList.remove("esconde");
   document.querySelector(".meuQuizz").scrollIntoView();
@@ -259,20 +259,21 @@ function voltar() {
 
 // Lucca Viccini
 
-
 function criarPerguntas() {
-  
   const comecePeloComeco = document.querySelector(".comece-pelo-comeco");
   const crieSuasPerguntas = document.querySelector(".crie-suas-perguntas");
-  
+
   numeroPerguntas = Number(document.querySelector("#qtd-pgt-quizz").value);
-  numeroNiveis = Number(document.querySelector("#qtd-niveis-quizz").value);
 
-
-  if (checkTitulo() && checkUrl() && checkNumeroPerguntas() && checkNumeroNiveis()) {
+  if (
+    checkTitulo() &&
+    checkUrl() &&
+    checkNumeroPerguntas() &&
+    checkNumeroNiveis()
+  ) {
     console.log("checks ok");
     comecePeloComeco.classList.toggle("escondido");
-    
+
     crieSuasPerguntas.innerHTML += `
       <h2>Crie suas perguntas</h2>
       <div id="editar-pergunta1" class="editar-pergunta">
@@ -319,7 +320,7 @@ function criarPerguntas() {
           </nav>
           <div id="editar-pergunta${i}" class="editar-pergunta escondido">
               <div class="pergunta-t3">
-                  <input id="pergunta-quizz" type="text" placeholder="Pergunta 2">
+                  <input id="pergunta-quizz" type="text" placeholder="Pergunta ${i}">
                   <input id="url-img-pergunta-quizz" type="text" placeholder="Cor de fundo da pergunta">
               </div>
               <div class="resposta">
@@ -354,42 +355,87 @@ function criarPerguntas() {
     <button onclick="criarNiveis()" type="submit"> Prosseguir pra criar níveis</button>
     `;
 
-
     // selecionando img dentro da nav menu-editar e adicionando onclick
     const img = document.querySelectorAll(".menu-editar>img");
-    img.forEach(imagem => imagem.onclick = function () {editarPergunta(this)});
+    img.forEach(
+      (imagem) =>
+        (imagem.onclick = function () {
+          editarPergunta(this);
+        })
+    );
     //img.onclick = function () {editarPergunta(this)};
-  } else { console.log("checks não ok") }
-
+  } else {
+    console.log("checks não ok");
+  }
 }
 
-function editarPergunta(teste) {
-  const editarPerguntaID = teste.parentNode.nextElementSibling.id;
+function editarPergunta(editar_pergunta) {
+  const editarPerguntaID = editar_pergunta.parentNode.nextElementSibling.id;
   const editar = document.querySelector(`#${editarPerguntaID}`);
   editar.classList.toggle("escondido");
-  editar.children[1].children[1].scrollIntoView({
+  editar.children[0].scrollIntoView({
     behavior: "smooth",
     block: "center",
     inline: "center",
   });
 }
 
-
-
 function criarNiveis() {
+  numeroNiveis = Number(document.querySelector("#qtd-niveis-quizz").value);
   const perguntas = document.querySelector(".crie-suas-perguntas");
   const niveis = document.querySelector(".decidir-niveis");
-  niveis.classList.toggle("escondido");
+  //niveis.classList.toggle("escondido");
   perguntas.classList.toggle("escondido");
-  niveis.children[0].scrollIntoView({
-    behavior: "auto",
-    block: "center",
-    inline: "center",
-  });
+  niveis.innerHTML += `
+            <div class="nivel-t3">
+                <h2>Agora, decida os níveis</h2>
+                <div class="container-h3">
+                    <h3>Nivel 1</h3>
+                </div>
+                <input id="titulo-nivel" type="text" placeholder="Título do nível">
+                <input id="porcentagem-acerto-minima" type="text" placeholder="% de acerto mínima">
+                <input id="url-imagem-nivel" type="text" placeholder="URL da imagem do nível">
+                <textarea id="descricao-nivel" type="text" placeholder="Descrição do nível"></textarea>
+            </div>`;
+
+  for (let i = 2; i <= numeroNiveis; i++) {
+    niveis.innerHTML += `
+            <nav class="menu-editar">
+                <div class="container-h3">
+                    <h3>Nível ${i}</h3>
+                </div>
+                <img onclick="editarNivel()" src="./images/edit.svg" alt="edit-logo">
+            </nav>
+            <div id="editar-nivel${i}" class="nivel-t3 escondido">
+                <input id="titulo-nivel" type="text" placeholder="Título do nível">
+                <input id="porcentagem-acerto-minima" type="text" placeholder="% de acerto mínima">
+                <input id="url-imagem-nivel" type="text" placeholder="URL da imagem do nível">
+                <textarea id="descricao-nivel" type="text" placeholder="Descrição do nível"></textarea>
+            </div>
+    `;
+  }
+  niveis.innerHTML += `
+  <button onclick="finalizarQuizz()" type="submit">Finalizar Quizz</button>
+  `;
+ 
+  const img = document.querySelectorAll(".decidir-niveis .menu-editar>img");
+  img.forEach(
+    (imagem) =>
+      (imagem.onclick = function () {
+        editarNivel(this);
+      })
+  );
+   niveis.children[0].scrollIntoView({
+     behavior: "auto",
+     block: "center",
+     inline: "center",
+   });
 }
 
-function editarNivel() {
-  const editar = document.querySelector("#editar-nivel2");
+function editarNivel(editar_nivel) {
+  const editarNivelID = editar_nivel.parentNode.nextElementSibling.id;
+  const editar = document.querySelector(`#${editarNivelID}`);
+  //const editar = document.querySelector("#editar-nivel2");
   editar.classList.toggle("escondido");
   console.log(editar.children[2]);
   editar.children[2].scrollIntoView({
@@ -404,6 +450,22 @@ function finalizarQuizz() {
   const finalizar = document.querySelector(".finalizar");
   finalizar.classList.toggle("escondido");
   niveis.classList.toggle("escondido");
+
+  console.log(urlImgQuizz);
+  console.log(tituloQuizz);
+
+  finalizar.innerHTML += `
+            <h2>Seu quizz está pronto! </h2>
+            
+            <div class="container-img-fim">
+                <img src="${urlImgQuizz}" alt="hogwarts">
+                <p> ${tituloQuizz} </p>
+                
+            </div>
+            
+            <button onclick="" type="submit"> Acessar Quizz</button>
+            <button onclick="voltarHome()" class="voltar-home">Voltar para home</button>
+  `;
 }
 
 function voltarHome() {
@@ -418,28 +480,24 @@ function checkTitulo() {
   const tamanhoTitulo = tituloQuizz.length;
   if (tituloQuizz != "" && tamanhoTitulo >= 20 && tamanhoTitulo <= 65) {
     return true;
-  }
-  else {
+  } else {
     if (tituloQuizz == "") {
       alert("O campo titulo não pode estar vazio");
       return false;
-    }
-    else {
+    } else {
       if (tamanhoTitulo < 20) {
         alert("O titulo deve ter no minimo 20 caracteres");
         return false;
-      }
-      else if (tamanhoTitulo > 65) {
+      } else if (tamanhoTitulo > 65) {
         alert("O titulo deve ter no maximo 65 caracteres");
         return false;
       }
     }
   }
-
 }
 
 function checkUrl() {
-  urlImgQuizz = document.querySelector("#url-img-quizz").value; 
+  urlImgQuizz = document.querySelector("#url-img-quizz").value;
   try {
     new URL(String(urlImgQuizz));
     return true;
@@ -447,17 +505,19 @@ function checkUrl() {
     alert("URL invalida");
     return false;
   }
-}   
+}
 
 function checkNumeroPerguntas() {
-  if (numeroPerguntas == "") {  
+  if (numeroPerguntas == "") {
     alert("O campo numero de perguntas não pode estar vazio");
     return false;
   } else {
     if (numeroPerguntas < 3) {
       alert("O numero de perguntas deve ser no minimo 3");
       return false;
-    } else { return true; }
+    } else {
+      return true;
+    }
   }
 }
 
@@ -469,15 +529,17 @@ function checkNumeroNiveis() {
     if (numeroNiveis < 2) {
       alert("O numero de niveis deve ser no minimo 2");
       return false;
-    } else { return true; }
+    } else {
+      return true;
+    }
   }
 }
 
-function checkHex(numeroHex){
+function checkHex(numeroHex) {
   const reg = /^#[0-9A-F]{6}$/i;
-  if(reg.test(numeroHex)){
+  if (reg.test(numeroHex)) {
     return true;
-  }else {return false;}
-  
+  } else {
+    return false;
+  }
 }
-
