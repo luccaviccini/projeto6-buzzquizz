@@ -7,12 +7,11 @@ body * {
 html {
     scroll-behavior: smooth;
   }
-.esconde{
-    display: none;
-}
+
     
 header{
-    background-color: red;
+    
+    background-color: #EC362D;
     width: 100vw;
     height: 69px;
     display: flex;
@@ -186,9 +185,7 @@ header h1{
     color: #FFFFFF;
 }
 
-.escondido{
-    display:none;
-}
+
 
 @media only screen and (max-width: 1100px)  {
     .meuQuizz{
@@ -438,4 +435,238 @@ button:hover{
         margin-top: 21px;
         margin-bottom: 79px;
     }
+}
+
+.main-t3 {
+    padding-top: calc(69px + 5%);
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #FAFAFA;
+}
+
+.comece-pelo-comeco,
+.crie-suas-perguntas,
+.decidir-niveis,
+.finalizar {
+    max-width: 564px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 18px;
+    transition: opacity 200ms ease-in, height 200ms linear;
+}
+
+
+.comece-pelo-comeco h2,
+.crie-suas-perguntas h2,
+.decidir-niveis h2,
+.finalizar h2 {
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    color: black;
+    margin-bottom: 50px;
+}
+
+.comece-pelo-comeco input,
+.crie-suas-perguntas input,
+.decidir-niveis input,
+.decidir-niveis textarea {
+    max-width: 564px;
+    width: 100vw;
+    height: 46px;
+    width: 100%;
+    margin: 0px 17px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    padding-left: 2%;
+    margin-bottom: 9px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #606060;
+
+}
+
+.comece-pelo-comeco input:focus,
+.crie-suas-perguntas input:focus,
+.decidir-niveis input:focus,
+.decidir-niveis textarea:focus {
+    outline-color: #999999;
+}
+
+.comece-pelo-comeco input::placeholder,
+.crie-suas-perguntas input::placeholder,
+.decidir-niveis input::placeholder,
+.decidir-niveis textarea::placeholder {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #BABABA;
+}
+
+.comece-pelo-comeco>button,
+.crie-suas-perguntas>button,
+.decidir-niveis>button,
+.finalizar>button {
+    max-width: 367px;
+    width: 100%;
+    height: 54px;
+    background: #EC362D;
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #FFF5F4;
+    border: none;
+    margin: 25px 0;
+}
+
+.comece-pelo-comeco button:hover,
+.crie-suas-perguntas button:hover,
+.decidir-niveis button:hover,
+.finalizar button:hover {
+    background: #D32C22;
+    cursor: pointer;
+}
+
+.pergunta-t3,
+.resposta,
+.respostas-incorretas,
+.nivel-t3 {
+    max-width: 564px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.container-h3,
+.container-inputs {
+    max-width: 564px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.container-h3 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000;
+    align-items: center;
+    height: 73px;
+    
+}
+
+
+
+.container-inputs {
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+
+.editar-pergunta {
+    max-width: inherit;
+    width: 100%;
+    transition: all 1s linear;
+}
+
+.menu-editar {
+    max-width: 564px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+
+}
+
+.menu-editar img:hover {
+    cursor: pointer;
+}
+
+#descricao-nivel {
+    height: 177px;
+    display: flex;
+
+}
+
+.container-img-fim {
+    max-width: 500px;
+    max-height: 266px;
+    width: 100%;
+    background-color: aquamarine;
+    border-radius: 5px;
+    background-image: linear-gradient(to top, black, white);
+    position: relative;
+}
+
+.container-img-fim img {
+    max-width: 500px;
+    max-height: 266px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    mask-image: linear-gradient(black 60%, transparent);
+    -webkit-mask-image: linear-gradient(black 60%, transparent);
+
+}
+
+.container-img-fim>p {
+    max-width: 500px;
+    max-height: 54px;
+    position: absolute;
+    bottom: 20px;
+    left: 23px;
+    color: white;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 27px;
+}
+
+button.voltar-home {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #818181;
+    margin-top: 0px;
+    background: none;
+}
+
+button.voltar-home:hover {
+    cursor: pointer;
+    background: none;
+    color: #999999
+}
+
+button.desabilitado {
+    background: #D1D1D1;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.esconde{
+    display: none;
+}
+.escondido{
+    display:none;
+}
+.escondido {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition-timing-function: ease-in;
 }
