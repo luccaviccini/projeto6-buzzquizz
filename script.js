@@ -254,37 +254,127 @@ function voltar() {
   tela1.classList.remove("esconde");
   document.querySelector(".meuQuizz").scrollIntoView();
 }
-começar();
+// começar();
 //LUCAS DUAN
 
 // Lucca Viccini
 
 
-
 function criarPerguntas() {
-  const criarPerguntas = document.querySelector(".crie-suas-perguntas");
+  
   const comecePeloComeco = document.querySelector(".comece-pelo-comeco");
+  const crieSuasPerguntas = document.querySelector(".crie-suas-perguntas");
+  
+  numeroPerguntas = Number(document.querySelector("#qtd-pgt-quizz").value);
+  numeroNiveis = Number(document.querySelector("#qtd-niveis-quizz").value);
+
+
   if (checkTitulo() && checkUrl() && checkNumeroPerguntas() && checkNumeroNiveis()) {
     console.log("checks ok");
-    criarPerguntas.classList.toggle("escondido");
     comecePeloComeco.classList.toggle("escondido");
+    
+    crieSuasPerguntas.innerHTML += `
+      <h2>Crie suas perguntas</h2>
+      <div id="editar-pergunta1" class="editar-pergunta">
+          <div class="pergunta-t3">
+              <div class="container-h3">
+                  <h3>Pergunta 1</h3>
+              </div>
+              <input id="texto-pergunta" type="text" placeholder="Texto da pergunda">
+              <input id="cor-de-fundo-pergunta" type="text" placeholder="Cor de fundo da pergunta">
+          </div>
+          <div class="resposta">
+              <div class="container-h3">
+                  <h3>Resposta correta</h3>
+              </div>
+              <input id="resposta-correta" type="text" placeholder="Resposta correta">
+              <input id="url-img-resposta-correta" type="text" placeholder="URL da imagem">
+          </div>
+          <div class="respostas-incorretas">
+              <div class="container-h3">
+                  <h3>Respostas incorretas</h3>
+              </div>
+              <div class="container-inputs">
+                  <input id="resposta-incorreta-1" type="text" placeholder="Resposta incorreta 1">
+                  <input id="url-img-resp-incorreta-1" type="text" placeholder="URL da imagem 3">
+              </div>
+              <div class="container-inputs">
+                  <input id="resposta-incorreta-2" type="text" placeholder="Resposta incorreta 2">
+                  <input id="url-img-resp-incorreta-2" type="text" placeholder="URL da imagem 3">
+              </div>
+              <div class="container-inputs">
+                  <input id="resposta-incorreta-3" type="text" placeholder="Resposta incorreta 3">
+                  <input id="url-img-resp-incorreta-3" type="text" placeholder="URL da imagem 3">
+              </div>
+          </div>
+      </div> `;
+
+    for (let i = 2; i <= numeroPerguntas; i++) {
+      crieSuasPerguntas.innerHTML += `
+          <nav class="menu-editar">
+              <div class="container-h3">
+                  <h3>Pergunta ${i} </h3>
+              </div>
+              <img  src="./images/edit.svg" alt="edit-logo">
+          </nav>
+          <div id="editar-pergunta${i}" class="editar-pergunta escondido">
+              <div class="pergunta-t3">
+                  <input id="pergunta-quizz" type="text" placeholder="Pergunta 2">
+                  <input id="url-img-pergunta-quizz" type="text" placeholder="Cor de fundo da pergunta">
+              </div>
+              <div class="resposta">
+                  <div class="container-h3">
+                      <h3>Resposta correta</h3>
+                  </div>
+                  <input id="pergunta-quizz" type="text" placeholder="Resposta correta">
+                  <input id="url-img-pergunta-quizz" type="text" placeholder="URL da imagem">
+              </div>
+              <div class="respostas-incorretas">
+                  <div class="container-h3">
+                      <h3>Respostas incorretas</h3>
+                  </div>
+                  <div class="container-inputs">
+                      <input id="pergunta-quizz" type="text" placeholder="Resposta incorreta 1">
+                      <input id="url-img-pergunta-quizz" type="text" placeholder="URL da imagem 3">
+                  </div>
+                  <div class="container-inputs">
+                      <input id="pergunta-quizz" type="text" placeholder="Resposta incorreta 2">
+                      <input id="url-img-pergunta-quizz" type="text" placeholder="URL da imagem 3">
+                  </div>
+                  <div class="container-inputs">
+                      <input id="pergunta-quizz" type="text" placeholder="Resposta incorreta 3">
+                      <input id="url-img-pergunta-quizz" type="text" placeholder="URL da imagem 3">
+                  </div>
+              </div>
+          </div>
+
+        `;
+    }
+    crieSuasPerguntas.innerHTML += `
+    <button onclick="criarNiveis()" type="submit"> Prosseguir pra criar níveis</button>
+    `;
+
+
+    // selecionando img dentro da nav menu-editar e adicionando onclick
+    const img = document.querySelectorAll(".menu-editar>img");
+    img.forEach(imagem => imagem.onclick = function () {editarPergunta(this)});
+    //img.onclick = function () {editarPergunta(this)};
   } else { console.log("checks não ok") }
 
 }
 
-
-
-function editarPergunta() {
-  const editar = document.querySelector("#editar-pergunta2");
+function editarPergunta(teste) {
+  const editarPerguntaID = teste.parentNode.nextElementSibling.id;
+  const editar = document.querySelector(`#${editarPerguntaID}`);
   editar.classList.toggle("escondido");
-  editar.children[1].children[1].scrollIntoView(
-    {
-      behavior: "smooth",
-      block: "center",
-      inline: "center",
-    }
-  );
+  editar.children[1].children[1].scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+    inline: "center",
+  });
 }
+
+
 
 function criarNiveis() {
   const perguntas = document.querySelector(".crie-suas-perguntas");
@@ -360,7 +450,6 @@ function checkUrl() {
 }   
 
 function checkNumeroPerguntas() {
-  numeroPerguntas = Number(document.querySelector("#qtd-pgt-quizz").value);
   if (numeroPerguntas == "") {  
     alert("O campo numero de perguntas não pode estar vazio");
     return false;
@@ -373,7 +462,6 @@ function checkNumeroPerguntas() {
 }
 
 function checkNumeroNiveis() {
-  numeroNiveis = Number(document.querySelector("#qtd-niveis-quizz").value);
   if (numeroNiveis == "") {
     alert("O campo numero de niveis não pode estar vazio");
     return false;
@@ -384,3 +472,12 @@ function checkNumeroNiveis() {
     } else { return true; }
   }
 }
+
+function checkHex(numeroHex){
+  const reg = /^#[0-9A-F]{6}$/i;
+  if(reg.test(numeroHex)){
+    return true;
+  }else {return false;}
+  
+}
+

@@ -440,7 +440,7 @@ button:hover{
 .main-t3 {
     padding-top: calc(69px + 5%);
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -555,6 +555,7 @@ button:hover{
     width: 100%;
     display: flex;
     align-items: center;
+    
 
 }
 
@@ -563,8 +564,9 @@ button:hover{
     font-size: 20px;
     line-height: 23px;
     color: #000;
-    margin-bottom: 12px;
-
+    align-items: center;
+    height: 73px;
+    
 }
 
 
@@ -587,6 +589,8 @@ button:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
 
 }
 
